@@ -36,11 +36,14 @@
     i++;
     if(i<t)
       servo.write(i);
+  
     else if(i>=t){
-    for(int x=i;i>=0;i--){
-      servo.write(x);
-      delay(10);
-    }
+    
+      for(int x=i;i>=0;i--){
+        servo.write(x);
+        delay(10);
+      }
+    
     i = 0;
     }
       
