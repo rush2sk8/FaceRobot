@@ -11,7 +11,7 @@
     const int EYESTHRESHHOLD  = 150;
     /***************/
     char letter;
-    /*END***********/
+    /******END******/
    
     void setup(){
       Serial.begin(9600);
@@ -19,9 +19,9 @@
       eyes.attach(9);
       mouth.attach(11);
       neckX.attach(2);
-      neckX.write(0);
+      neckX.write(5);
       neckY.attach(3);
-      neckY.write(0);
+      neckY.write(5);
       Serial.flush();
       for(int i=0;i<70;i++)Serial.println();
     }
