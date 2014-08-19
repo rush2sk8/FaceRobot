@@ -19,9 +19,9 @@
       eyes.attach(9);
       mouth.attach(11);
       neckX.attach(2);
-      neckX.write(5);
+      neckX.write(10);
       neckY.attach(3);
-      neckY.write(5);
+      neckY.write(10);
       Serial.flush();
       for(int i=0;i<70;i++)Serial.println();
     }
@@ -35,59 +35,35 @@
         while(Serial.available()>0){Serial.read();}
       }
   
-      if(letter == 'x'){
-          Serial.println("Enter value to move head on X Axis");
-          while(Serial.available() == 0);{
-            int i = Serial.parseInt();
-             
-             if(i<NECKXTHRESHHOLD)
-                neckX.write(i);
-             else
-                Serial.println("Not a vaild value");
-              
-            while(Serial.available()>0){Serial.read();}
-          }
-      }
-      else if(letter == 'y'){
-          Serial.println("Enter value to move head on Y Axis");
-          while(Serial.available() == 0);{
-            int i = Serial.parseInt();
-             
-             if(i<NECKYTHRESHHOLD)
-                neckY.write(i);
-             else
-                Serial.println("Not a vaild value");
-              
-            while(Serial.available()>0){Serial.read();}
-          }
-      }
-      else if(letter == 'e'){
-          Serial.println("Enter value to move eyes");
-          while(Serial.available() == 0);{
-            int i = Serial.parseInt();
-             
-             if(i<EYESTHRESHHOLD)
-                eyes.write(i);
-             else
-                Serial.println("Not a vaild value");
-              
-            while(Serial.available()>0){Serial.read();}
-          }
-      }
-      else if(letter == 'm'){
-          Serial.println("Enter value to move mouth");
-          while(Serial.available() == 0);{
-            int i = Serial.parseInt();
-             
-             if(i<MOUTHTHRESHHOLD)
-                mouth.write(i);
-             else
-                Serial.println("Not a vaild value");
-              
-            while(Serial.available()>0){Serial.read();}
-          }
-      }     
-   
-   for(int i=0;i<70;i++)Serial.println();
+      if(letter == 'x')
+         moveServo("Enter value to move head on X Axis",NECKXTHRESHHOLD,neckX);  
+        
+      else if(letter == 'y')
+         moveServo("Enter value to move head on Y Axis",NECKYTHRESHHOLD,neckY);
+       
+      else if(letter == 'e')
+         moveServo("Enter value to move eyes",EYESTHRESHHOLD, eyes);
  
+      else if(letter == 'm')
+         moveServo("Enter value to move mouth",MOUTHTHRESHHOLD,mouth);
+    
+     for(int i=0;i<70;i++)Serial.println();
+ 
+  }
+  
+  void moveServo(String data, const int num, Servo servo){
+    
+      Serial.println(data);
+          while(Serial.available() == 0);{
+            int i = Serial.parseInt();
+             
+             if(i<num)
+                servo.write(i);
+             else{
+                Serial.println("Not a vaild value");
+                delay(1000); 
+           }
+            while(Serial.available()>0){Serial.read();}
+          }
+        
   }
