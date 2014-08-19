@@ -53,7 +53,7 @@
   
   void moveServo(String data, const int num, Servo servo){
     
-      Serial.println(data);
+      Serial.println(data+ ". The threshold is 0 - " + num);
           while(Serial.available() == 0);{
             int i = Serial.parseInt();
              
