@@ -25,12 +25,16 @@
   
   void loop(){
  
-  test(mouth,MOUTHTHRESHHOLD);
-  test(eyes,EYESTHRESHHOLD);
-  test(neckY,NECKYTHRESHHOLD); 
-  test(neckX,NECKXTHRESHHOLD);
-   
+
   }
+  
+  static void jawDrop(){
+    test(mouth,MOUTHTHRESHHOLD);
+    test(eyes,EYESTHRESHHOLD);
+    test(neckY,NECKYTHRESHHOLD); 
+    test(neckX,NECKXTHRESHHOLD); 
+  }
+  
   
  static void test(Servo servo,const int t){   
     i++;
