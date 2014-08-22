@@ -11,6 +11,7 @@
     const int EYESTHRESHHOLD  = 150;
     /***************/
     char letter;
+    static int i;
     /******END******/
    
     void setup(){
@@ -22,13 +23,21 @@
       neckX.write(10);
       neckY.attach(3);
       neckY.write(10);
+      i = 0;
       Serial.flush();
       for(int i=0;i<70;i++)Serial.println();
     }
     
     void loop(){
      
-      Serial.println("x = Move Head on X Axis, y = Move Head on Y Axis, e = Move Eyes, m = Move Mouth");
+      if(i<NECKXTHRESHHOLD)
+      neckX.write(++i);
+      
+ 
+  }
+  
+  void engageManualControl(){
+    Serial.println("x = Move Head on X Axis, y = Move Head on Y Axis, e = Move Eyes, m = Move Mouth");
       
       while(Serial.available() == 0);{
         letter = Serial.read();
@@ -48,8 +57,8 @@
          moveServo("Enter value to move mouth",MOUTHTHRESHHOLD,mouth);
     
      for(int i=0;i<70;i++)Serial.println();
- 
   }
+  
   
   void moveServo(String data, const int num, Servo servo){
     
