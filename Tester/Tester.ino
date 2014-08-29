@@ -30,8 +30,7 @@
     
     void loop(){
      
-      if(i<NECKXTHRESHHOLD)
-      neckX.write(++i);
+   engageManualControl();
       
  
   }
