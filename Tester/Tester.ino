@@ -17,12 +17,18 @@
     void setup(){
       Serial.begin(9600);
       pinMode(0,OUTPUT);
-      eyes.attach(9);
-      mouth.attach(11);
-      neckX.attach(2);
-      neckX.write(10);
-      neckY.attach(3);
-      neckY.write(10);
+     
+      eyes.attach(9);//this
+      mouth.attach(11);//this
+    
+     
+      neckX.attach(2);//this
+     
+      neckX.write(20);
+    
+     neckY.attach(3);//this
+   
+      neckY.write(20);
       i = 0;
       Serial.flush();
       for(int i=0;i<70;i++)Serial.println();
